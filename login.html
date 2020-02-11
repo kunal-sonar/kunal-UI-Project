@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+  <style type="text/css">
+  	h1,h2,h3,h4,h5,h6{
+  		background-color: #03fcf8;color:red;text-align: center;
+  		border-radius: 50px;
+  	}
+  	.bg-black{
+  		background-color: black;color: white;
+  	}
+  	.bg-orange{
+  		background-color: orange;color: white;
+  	}
+  	.box{
+  		padding: 6px;
+  		border-radius: 15px;
+  	}
+  	.my-vh{
+  		height: 100vh;
+  	}
+  	.gap{
+  		margin-left: 10px;
+  	}
+  	.img-size{
+  		width: 100%;
+  		height: 50px;
+  		margin-top: 8px;
+  	}
+  	p{font-size: 11px;}
+  </style>
+</head>
+<body ng-app="m" ng-controller="ctr">
+	<!--navbar-->
+<nav class="navbar bg-black">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">HOME</a></li>
+      <li><a href="#">ABOUT </a></li>
+      <li><a href="#">CONTACT </a></li>
+      <li><a href="#">SERVICES </a></li>
+    </ul>
+  </div>
+</nav>
+<!--navbar end-->
+	<!--pills-->
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 box my-vh well">
+				<ul class="nav nav-pills nav-stacked">
+	<li class="active"><a  data-toggle="pill" href="#TTEACHERS">TEACHERS</a></li>
+  <li ><a data-toggle="pill" href="#TLOGIN">LOGIN</a></li>
+  <li><a  data-toggle="pill" href="#TSTUDENT_INFO">STUDENT_INFO</a></li>
+  <li><a  data-toggle="pill"href="#TCOURESE_LIST">COURESE_LIST</a></li>
+  <li><a data-toggle="pill" href="#TALLOCATED">ALLOCATED</a></li>
+
+	<li ><a  data-toggle="pill" href="#STUDENT_INFO">STUDENT</a></li>
+  <li ><a data-toggle="pill" href="#LOGIN_INFO">LOGIN</a></li>
+ 
+  <li><a  data-toggle="pill"href="#COURESE_INFO">COURESE</a></li>
+  <li><a data-toggle="pill" href="#ALLOCATED_INFO">ALLOCATED COURSE LIST</a></li>
+</ul>
+			</div>
+			<div class="col-sm-9 box my-vh">
+				
+<div class="tab-content">
+  <div id="TTEACHERS" class="tab-pane fade in active">
+   
+  </div>
+  <div id="TLOGIN" class="tab-pane fade">
+    <h3>Teacher login form</h3>
+    <div class="col-sm-6 col-sm-offset-3">
+    <div class="panel panel-primary ">
+  <div class="panel-heading">LOGIN</div>
+  <div class="panel-body">
+   <form action="/action_page.php">
+  <div class="form-group">
+    <label for="email">Email address:</label>
+    <input type="email" class="form-control" id="email" placeholder="Ex.xyz@gmail.com">
+  </div>
+  <div class="form-group">
+    <label for="pwd">Password:</label>
+    <input type="password" class="form-control" id="pwd" placeholder="enter your password...">
+  </div>
+  
+  
+</div>
+   <div class="panel-footer">
+   	<input type="submit" value="submit" class="btn btn-success btn-sm">
+   	<input type="reset" value="cancle" class="btn btn-danger btn-sm gap"></div>
+   	</form>
+</div>
+</div>
+      </div>
+  <div id="TSTUDENT_INFO" class="tab-pane fade">
+    <h3>Student Information Details</h3>
+    <div class="col-sm-4 " ng-repeat="x in db">
+    	<div class="panel panel-default">
+  <div class="panel-heading">User-Id :{{x.id}} </div>
+  <div class="panel-body">
+  		<p><img src="{{x.std_img}}" class="img-responsive"></p>
+  		<p>name :{{x.name}}</p>
+  	    <p>collage : {{x.collage}}</p>
+		<p>address :{{x.address}}</p>
+		<p>contact :{{x.contact}}</p>
+		<p>email :{{x.Email}}</p>
+  </div>
+</div>
+    </div>
+  </div>
+  <div id="TCOURESE_LIST" class="tab-pane fade">
+    <h3>Courses List</h3>
+    <div class="col-sm-4 " ng-repeat="x in db">
+    	<img ng-src="{{x.imgage}}" class="img-responsive img-size" >
+    	<p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
+    </div>
+  </div>
+
+    <div id="TALLOCATED" class="tab-pane fade">
+    <h3>Allocated Courses</h3>
+    <div class="row">
+    	<div class="col-sm-6" ng-repeat="x in db">
+
+    		<div class="panel panel-default">
+  <div class="panel-heading">User-Id :{{x.id}} </div>
+  <div class="panel-body">
+  	<div class="col-sm-6">
+  		<p><img src="{{x.std_img}}" class="img-responsive"></p>
+  		<p>name :{{x.name}}</p>
+  	    <p>collage : {{x.collage}}</p>
+		
+  </div>
+
+    		
+    	
+    	<div class="col-sm-6">
+    		
+    	<img ng-src="{{x.imgage}}" class="img-responsive img-size" >
+    	<p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
+    </div>
+  </div>
+</div>
+</div>
+    	</div>
+    </div>
+    </div>
+		</div>
+	</div>
+	<!-- student login form-->
+	<div id="LOGIN_INFO" class="tab-pane fade">
+    <h3>Student login form</h3>
+    <div class="col-sm-6 col-sm-offset-3">
+    <div class="panel panel-primary ">
+  <div class="panel-heading">LOGIN</div>
+  <div class="panel-body">
+   <form action="/action_page.php">
+  <div class="form-group">
+    <label for="email">Email address:</label>
+    <input type="email" class="form-control" id="email" placeholder="Ex.xyz@gmail.com">
+  </div>
+  <div class="form-group">
+    <label for="pwd">Password:</label>
+    <input type="password" class="form-control" id="pwd" placeholder="enter your password...">
+  </div>
+
+  	<!-- course list-->
+  	<div id="COURESE_INFO" class="tab-pane fade">
+    <h3>Courses List</h3>
+    <div class="col-sm-4 " ng-repeat="x in db">
+    	<img ng-src="{{x.imgage}}" class="img-responsive img-size" >
+    	<p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
+    </div>
+  </div>
+  	<!-- student allocated courses-->
+  <div id="ALLOCATED_INFO" class="tab-pane fade">
+    <h3>Allocated Courses</h3>
+    <div class="row">
+    	<div class="col-sm-6" ng-repeat="x in db">
+
+    		<div class="panel panel-default">
+  <div class="panel-heading">User-Id :{{x.id}} </div>
+  <div class="panel-body">
+  	<div class="col-sm-6">
+  		<p><img src="{{x.std_img}}" class="img-responsive"></p>
+  		<p>name :{{x.name}}</p>
+  	    <p>collage : {{x.collage}}</p>
+		
+  </div>
+
+    		
+    	
+    	<div class="col-sm-6">
+    		
+    	<img ng-src="{{x.imgage}}" class="img-responsive img-size" >
+    	<p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
+    </div>
+  </div>
+</div>
+</div>
+    	</div>
+    </div>
+  </div>
+</div>
+
+			
+    <!-- end-->
+
+<!--pils end-->
+<script type="text/javascript">
+	var a=angular.module("m",[]);
+	a.controller("ctr", function ($scope,$http) {
+	$http.get("p102.php").success(function(data){
+
+				$scope.db=data;
+			});
+	})
+</script>
+</body>
+</html>
